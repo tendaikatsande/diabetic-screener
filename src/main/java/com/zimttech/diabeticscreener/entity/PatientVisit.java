@@ -1,5 +1,6 @@
 package com.zimttech.diabeticscreener.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class PatientVisit extends Auditable<String>{
     private String visitReason;
     private int visitDuration;
 
+    @JsonIgnoreProperties("visits")
     @OneToMany(mappedBy = "visit", cascade = CascadeType.ALL)
     private List<Vital> vitals;
 }
